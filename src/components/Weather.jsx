@@ -6,9 +6,10 @@ import { useState } from 'react';
 const Weather = ({showPage,setShowPage,isBackground}) => {
   const [ weather, setWeather ] = useState({});
   const cloid = weather.weather?.[0].icon;
+  const temp = (weather.main?.temp - 273.15) * 9/5 + 32;
   const [timer, setTimer] = useState(0);
   const [ indexD, setIndexD ] = useState('d');
-  const [isCelsius, setIsCelsius] = useState(false);
+  const [isCelsius, setIsCelsius] = useState(true);
   const disi = [showPage ? "show-weather" : "hiden",isBackground ? "font-yes" : "font-no" ]
 
   const changeDegrees = () => {
@@ -45,7 +46,7 @@ const Weather = ({showPage,setShowPage,isBackground}) => {
         <label htmlFor=""><h3>Wind Speed:</h3>{weather.wind?.speed} m/s</label>
         <label htmlFor=""><h3>Clouds:</h3>{weather.clouds?.all}%</label>
         <label htmlFor=""><h3>Pressure:</h3>{weather.main?.pressure} mb</label>
-        <label htmlFor=""><h3>{isCelsius ? (weather.main?.temp-32)*5/9:weather.main?.temp}</h3>{isCelsius? "°C":"°F"}</label>
+        <label htmlFor=""><h3>{isCelsius ? Math.floor((temp-32)*5/9) : Math.floor(temp)}</h3>{isCelsius? "°C":"°F"}</label>
         <br />
         <button onClick={changeDegrees}>{isCelsius? "switch to Fahrenheit degrees" : "switch to Celsius degrees"}</button>
       </div>
