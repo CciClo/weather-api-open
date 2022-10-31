@@ -92,6 +92,7 @@ label {
 
 h3 {
   color: purple;
+  text-shadow: none;
 
 }
 
@@ -133,6 +134,13 @@ button {
   background-size: 10vw;
   background-position: center;
   background-color: black;
+  /* background-color:rgb(40, 79, 255) */
+}
+
+@media (max-width: 500px) {
+  .loader {
+    background-size: 24vw;
+  }
 }
 /* font change */
 

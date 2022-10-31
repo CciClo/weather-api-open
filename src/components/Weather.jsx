@@ -37,7 +37,7 @@ const Weather = ({showPage,setShowPage,isBackground}) => {
     navigator.geolocation.getCurrentPosition(succes);
   }, [] );
 
-  document.body.style = isBackground? `background-image: url(https://github.com/CciClo/weatherOpen/raw/main/weatherOpen/${cloid}.gif)`: "background-color: rgba(0, 0, 0 , 0.98)";
+  document.body.style = isBackground? `background-image: url(https://github.com/CciClo/weatherOpen/raw/main/weatherOpen/${cloid}.gif)`: `${indexD==="d"?  'background-color: #B0A8B9' : 'background-color: #4B4453'}`;
 
   return (
     <div className={`${disi[0]} ${disi[1]}`}>
