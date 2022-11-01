@@ -40,19 +40,21 @@ const Weather = ({showPage,setShowPage,isBackground}) => {
   document.body.style = isBackground? `background-image: url(https://github.com/CciClo/weatherOpen/raw/main/weatherOpen/${cloid}.gif)`: `${indexD==="d"?  'background-color: #B0A8B9' : 'background-color: #4B4453'}`;
 
   return (
-    <div className={`${disi[0]} ${disi[1]}`}>
-      <div className={indexD} >
-        <label htmlFor=""><h2>City:</h2>{weather.name}, {weather.sys?.country}</label>
-        <label htmlFor=""><h3>Wind Speed:</h3>{weather.wind?.speed} m/s</label>
-        <label htmlFor=""><h3>Clouds:</h3>{weather.clouds?.all}%</label>
-        <label htmlFor=""><h3>Pressure:</h3>{weather.main?.pressure} mb</label>
-        <label htmlFor=""><h3>{isCelsius ? Math.floor((temp-32)*5/9) : Math.floor(temp)}</h3>{isCelsius? "°C":"°F"}</label>
+    <div className={`${disi[0]} ${disi[1]} ${indexD}`}>
+      <h3 className='city'>{weather.name}, {weather.sys?.country}</h3>
+      <div>
+        <h3>Wind Speed: {weather.wind?.speed} m/s</h3>
+        <h3>Clouds: {weather.clouds?.all}%</h3>
+        <h3>Pressure: {weather.main?.pressure} mb</h3>
         <br />
         <button onClick={changeDegrees}>{isCelsius? "switch to Fahrenheit degrees" : "switch to Celsius degrees"}</button>
       </div>
-      <div>
+      <div className='temp'>
         <h3>"{weather.weather?.[0].description}"</h3>
-        <img src={`http://openweathermap.org/img/wn/${cloid}@2x.png`} alt="" />
+        <div>
+          <img src={`http://openweathermap.org/img/wn/${cloid}@2x.png`} alt="" />
+          <h3>{isCelsius ? Math.floor((temp-32)*5/9) : Math.floor(temp)} {isCelsius? "°C":"°F"}</h3>
+        </div>
       </div>
     </div>
   );
