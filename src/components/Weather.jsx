@@ -16,13 +16,13 @@ const Weather = ({showPage,setShowPage,isBackground}) => {
     setIsCelsius(!isCelsius);
   }
 
-  useEffect(() => {
-    setTimer(timer+1)
-    if (timer == 1){
-      setShowPage(true)
-      setIndexD(cloid[cloid.length-1])
-    }    
-  },[weather]);
+  // useEffect(() => {
+  //   setTimer(timer+1)
+  //   if (timer == 1){
+  //     setShowPage(true)
+  //     setIndexD(cloid[cloid.length-1])
+  //   }    
+  // },[weather]);
 
 
   useEffect(() => {
@@ -31,7 +31,10 @@ const Weather = ({showPage,setShowPage,isBackground}) => {
       const lon = pos.coords.longitude;
       const apiKey = "2f346c31b213811ac52cc3ce1d7d05c7";
       axios.get(`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${apiKey}`)
-        .then((res) => setWeather(res.data))
+        .then((res) => {
+          setWeather(res.data)
+          setShowPage(true)
+        })
       
     }
     navigator.geolocation.getCurrentPosition(succes);
