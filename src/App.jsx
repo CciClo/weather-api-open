@@ -5,13 +5,13 @@ import Weather from './components/Weather'
 
 function App() {
   const [ showPage, setShowPage ] = useState(false);
-  const [isBackground, setIsBackground] = useState(false);
+  const [isBackground, setIsBackground] = useState(true);
   
   return (
     <div className="App">
       <Weather showPage={showPage} setShowPage={setShowPage} isBackground ={isBackground}/>
       <div className={showPage? "hiden":"loader"}></div>
-      <button className={showPage? "btn-background" : "hide"} onClick={() => setIsBackground(!isBackground)}>{isBackground? "Hide background" : "Show background"}</button>
+      <button className={showPage? "btn-background" : "hide"} onClick={() => setIsBackground(!isBackground)} > {isBackground ? "Hide background" : "Show background"} </button>
     </div>
   )
 }
